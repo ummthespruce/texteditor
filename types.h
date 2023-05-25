@@ -3,6 +3,7 @@
 #define QTYPE TCmd
 #define TTYPE char
 #define STYPE TDLListT
+#define LTYPE TTape
 
 #define INFILE "tema1.in"
 #define OUTFILE "tema1.out"
@@ -51,9 +52,31 @@ typedef struct dllt {
 
 typedef struct tape {
     TDLListT sentry;
-    TDLListT finger;
 } *TTape;
 
+
+typedef struct dlll {
+    struct dlll *prev, *next;
+    LTYPE value;
+} *TDLListL, TDLCellL;
+
+typedef struct line {
+	// for lines
+    TDLListL sentry;
+	
+	// for line finger
+	TDLListL finger;
+	
+	// for cursor
+    TDLListT cursor;
+	
+	// for the current position
+	int posx;
+	int posy;
+	
+	// for the position where it should be after going down or up
+	int posline;
+} *TLine;
 
 
 typedef struct lls {
