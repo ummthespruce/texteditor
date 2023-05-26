@@ -11,3 +11,5 @@ void move_left(TLine line);
 void move_right(TLine line);
 void create_down(TLine line);
 void create_on_cursor(TLine line, char value);
+TDLListT delete_line_on_finger(TLine line);
+void delete_character_on_cursor(TLine);

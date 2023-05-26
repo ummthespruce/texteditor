@@ -1,6 +1,6 @@
 #include "io.h"
 
-#define DEBUGIO
+// #define DEBUGIO
 
 char add_buffer_to_tape(char *string, TDLListT *last) {
 	char nlflag = 0;
@@ -21,6 +21,7 @@ char add_buffer_to_tape(char *string, TDLListT *last) {
 		}
 	}
 	*last = prev;
+
 	return nlflag;
 }
 
@@ -45,7 +46,12 @@ TLine readfile(const char *filename) {
 			last = temp->finger->value->sentry;
 		}
 	}
-	// TODO delete current line and move back up
+	delete_line_on_finger(temp);
+    temp->finger = temp->sentry->next;
+    temp->cursor = temp->finger->value->sentry;
+    temp->posx = 1;
+    temp->posy = 1;
+    temp->posline = 1;
 	return temp;
 	fclose(file);
 }

@@ -75,7 +75,7 @@ typedef struct line {
 	
 	// for cursor
     TDLListT cursor;
-	
+	TDLListL linepos;
 	// for the current position
 	int posx;
 	int posy;
@@ -112,12 +112,14 @@ typedef struct filewindow {
 } FileWindowT;
 
 typedef struct openfile {
-	FileWindow FW
+	FileWindowT FW;
 	char *filename;
 	char modified;
 	char exit;
 	char focused;
 	TLine content;
+    int linepos;
+    int colpos;
 } OpenedFileT;
 
 

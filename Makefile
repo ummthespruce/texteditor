@@ -1,12 +1,12 @@
 CC=gcc
-CFLAGS= -g -Wall
+CFLAGS= -g -Wall -lcurses
 
-DEPSSRC=stack.c queue.c tape.c parser.c commands.c
+DEPSSRC=tape.c line.c io.c
 DEPS+=$(DEPSSRC:.c=.h)
 DEPS+=types.h
 DEPSOBJ=$(DEPSSRC:.c=.o)
 
-EXE=tema1
+EXE=texteditor
 SRC=$(EXE:=.c)
 OBJ=$(SRC:.c=.o)
 
