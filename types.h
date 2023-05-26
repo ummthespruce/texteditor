@@ -1,4 +1,5 @@
 #pragma once
+#include <curses.h>
 
 #define QTYPE TCmd
 #define TTYPE char
@@ -25,6 +26,11 @@ enum Commands{
     WRITE,
     INSERT_LEFT,
     INSERT_RIGHT
+};
+
+enum States {
+	NONE,
+	INSERT
 };
 
 typedef struct cmd {
@@ -96,6 +102,26 @@ typedef struct undoredo {
     TStack redo;
 }*TUR;
 
+typedef struct filewindow {
+	WINDOW *filewin;
+	WINDOW *linewin;
+	WINDOW *contentwin;	
+	WINDOW *statewin;
+	int yMax, xMax;
+	int yBeg, xBeg;
+} FileWindowT;
+
+typedef struct openfile {
+	FileWindow FW
+	char *filename;
+	char modified;
+	char exit;
+	char focused;
+	TLine content;
+} OpenedFileT;
 
 
-
+// typedef struct settings{
+	// background color
+	// foreground color
+//}
